@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vectfy | Creative Studio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root{
+      --bg:#f7f5f2;
+      --card:#ffffff;
+      --text:#1f2933;
+      --muted:#6b7280;
+      --accent:#c6a15b; /* luxury gold */
+    }
+
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.7;
+    }
+    h1,h2,h3{font-family:'Playfair Display',serif;}
+    a{text-decoration:none;color:inherit;}
+
+    /* Navbar */
+    header{
+      position:sticky;top:0;z-index:1000;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid #e5e7eb;
+    }
+    nav{
+      max-width:1200px;margin:auto;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:18px 20px;
+    }
+    .logo img{height:42px;}
+
+    .menu{display:flex;gap:28px;align-items:center;font-size:15px;}
+    .menu a:hover{color:var(--accent);transition:.3s;}
+
+    .dropdown{position:relative;}
+    .dropdown-menu{
+      display:none;position:absolute;top:35px;left:0;
+      background:var(--card);border-radius:10px;
+      box-shadow:0 15px 40px rgba(0,0,0,.08);
+      min-width:190px;
+    }
+    .dropdown-menu a{display:block;padding:10px 15px;color:var(--muted);}
+    .dropdown-menu a:hover{background:var(--accent);color:white;}
+    .dropdown:hover .dropdown-menu{display:block;}
+
+    section{max-width:1200px;margin:auto;padding:90px 20px;}
+
+     /* Hero */
+    .hero{
+      min-height:80vh;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .hero h1{font-size:54px;max-width:700px;}
+    .hero h1 span{color:var(--accent);}
+    .hero p{max-width:520px;color:var(--muted);margin:20px 0 35px;}
+    .btn{
+      display:inline-block;padding:12px 28px;
+      border:1px solid var(--accent);
+      color:var(--accent);border-radius:30px;
+      transition:.3s;
+    }
+    .btn:hover{background:var(--accent);color:white;}
+
+    /* Cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+    .card{
+      background:var(--card);padding:35px;border-radius:22px;
+      box-shadow:0 20px 40px rgba(0,0,0,.06);
+      transition:.4s;
+    }
+    .card:hover{transform:translateY(-10px);}
+
+    /* Services Cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+    .services-grid .service-card{
+      background:var(--card);padding:40px;border-radius:30px;
+      text-align:center;box-shadow:0 25px 50px rgba(0,0,0,.08);transition:.4s;
+    }
+    .service-card:hover{transform:translateY(-12px) scale(1.03);}
+
+    /* Portfolio */
+    .portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:35px;}
+    .portfolio-card{
+      background:var(--card);color:var(--text);
+      padding:60px 90px;border-radius:32px;font-size:18px;
+      text-align:center;cursor:pointer;transition:.5s;box-shadow:0 20px 40px rgba(0,0,0,.06);
+    }
+    .portfolio-card {
+  position: relative;
+  background-size: cover;
+background-position: center;
+  border-radius: 32px;
+  height: 300px; /* Adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.5s;
+  box-shadow: 0 20px 40px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+/* Black overlay */
+.portfolio-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Black shade with opacity */
+  z-index: 0;
+  transition: background 0.5s;
+}
+
+.portfolio-card h3 {
+  position: relative;
+  z-index: 1; /* ensures text is above overlay */
+  margin: 0;
+  padding: 0 20px;
+}
+
+/* Hover effect */
+.portfolio-card:hover {
+  transform: scale(1.05);
+}
+
+.portfolio-card:hover::before {
+  background: rgba(0, 0, 0, 0.3); /* Slightly lighter on hover */
+}
+
+    .portfolio-card:hover{background:var(--accent);color:white;transform:scale(1.05);}
+
+    /* Expertise Tools */
+    .expertise{text-align:center;}
+    .tools{margin-top:50px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:40px;justify-items:center;}
+    .tool{display:flex;flex-direction:column;align-items:center;gap:14px;background:var(--card);padding:24px;border-radius:20px;box-shadow:0 22px 50px rgba(0,0,0,.09);transition:.4s;}
+    .tool img{width:72px;transition:transform .4s ease, filter .4s ease;}
+    .tool:hover img{transform:scale(1.15) rotate(2deg);filter:drop-shadow(0 10px 20px rgba(0,0,0,.25));}
+
+    /* Reviews */
+    .review{font-style:italic;color:var(--muted);background:var(--card);padding:25px;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,.06);transition:.4s;}
+    .review:hover{transform:translateY(-8px);}
+
+    /* Form */
+    form{
+      max-width:420px;margin:auto;background:var(--card);
+      padding:40px;border-radius:24px;
+      box-shadow:0 25px 50px rgba(0,0,0,.08);
+    }
+    input,textarea,button{
+      width:100%;padding:14px;border-radius:12px;
+      border:1px solid #d1d5db;margin-bottom:15px;
+      font-family:'Inter',sans-serif;
+    }
+    button{
+      background:var(--accent);color:white;border:none;
+      font-weight:600;cursor:pointer;transition:.3s;
+    }
+    button:hover{opacity:.9;}
+
+    footer{
+      background:var(--card);color:var(--text);
+      padding:50px 20px;text-align:center;
+    }
+    .social i{margin:0 12px;font-size:20px;color:var(--accent);}
+    .tagline{margin-top:20px;font-size:14px;color:var(--muted);}
+
+    @media(max-width:768px){
+      .hero h1{font-size:40px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      <img src="./New folder/New folder/for-web.png" alt="Vectfy">
+    </div>
+    <div class="menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <div class="dropdown"><a href="#portfolio">Templates ▾</a>
+        <div class="dropdown-menu">
+          <a href="#">Business Template</a>
+          <a href="#">Social Media Template</a>
+          <a href="#">Branding Template</a>
+        </div>
+      </div>
+      <div class="dropdown"><a href="#services">Services ▾</a>
+        <div class="dropdown-menu">
+          <a href="#portfolio">Design Templates</a>
+          <a href="#services">Creative Services</a>
+        </div>
+      </div>
+      <a href="login.html"><i class="fa-regular fa-user"></i></a>
+    </div>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h1>Welcome to <span>Vectfy</span></h1>
+  <p>A refined creative studio delivering premium design with clarity, trust and timeless elegance.</p>
+  <a class="btn" href="#portfolio">View Our Work</a>
+</section>
+
+<section id="services">
+  <h2>Services</h2><br>
+  <div class="grid services-grid">
+    <div class="service-card">🎨<h3>Brand Identity</h3><p>Luxury logos, color systems & brand guidelines.</p></div>
+    <div class="service-card">💻<h3>UI / UX Design</h3><p>Clean, modern interfaces for web & apps.</p></div>
+    <div class="service-card">📢<h3>Marketing Design</h3><p>Social media, ads & promotional visuals.</p></div>
+    <div class="service-card">🎨<h3>Brand Identity</h3><p>Luxury logos, color systems & brand guidelines.</p></div>
+    <div class="service-card">💻<h3>UI / UX Design</h3><p>Clean, modern interfaces for web & apps.</p></div>
+    <div class="service-card">📢<h3>Marketing Design</h3><p>Social media, ads & promotional visuals.</p></div>
+     <div class="service-card">💻<h3>UI / UX Design</h3><p>Clean, modern interfaces for web & apps.</p></div>
+    <div class="service-card">📢<h3>Marketing Design</h3><p>Social media, ads & promotional visuals.</p></div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h2>Portfolio</h2><br>
+  <div class="portfolio-grid">
+   <div class="portfolio-card">
+  <img src="./New folder/New folder/1.jpg" alt="Brand Identity Project"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/2.png" alt="Mobile App Interface"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/3.jpg" alt="Editorial & Print Design"width=100>
+  <h3></h3>
+ <img src="./New folder/New folder/4.jpg" alt="Brand Identity Project"width=500>
+  <h3>t</h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/5.jpg" alt="Mobile App Interface"width=300>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/7.jpg" alt="Editorial & Print Design"width=450>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/8.jpg" alt="Editorial & Print Design"width=350>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/9.jpg" alt="Editorial & Print Design"width=700>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/10.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/12.jpg" alt="Editorial & Print Design"width=350>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/13.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/14.jpg" alt="Editorial & Print Design"width=350>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/15.webp" alt="Editorial & Print Design"width=350>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/16.jpg" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/17.jpg" alt="Editorial & Print Design"width=700>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/18.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/19.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/44.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+ 
+<div class="portfolio-card">
+  <img src="./New folder/New folder/20.jpg" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/21.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/22.jpg" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/23.jpeg" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/24.jpg" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/25.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/26.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/27.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/28.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/29.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/30.jpg" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+<div class="portfolio-card">
+  <img src="./New folder/New folder/31.png" alt="Editorial & Print Design"width=500>
+  <h3></h3>
+</div>
+
+</section>
+
+<section id="about">
+  <h2>About Us</h2><br>
+  <p>Vectfy focuses on clean visual identity, thoughtful layouts and professional digital design for modern brands.At Vectfy,
+     we have seen firsthand how impactful design can be. By collaborating with clients across industries, we have transformed simple 
+     concepts into engaging websites, captivating graphics, and memorable branding. Each project is a journey, an opportunity to turn 
+     challenges into creative solutions that drive results. Our success is measured not only by beautiful designs but also by the tangible
+      impact they bring to our clients’ businesses.</p>
+</section>
+
+<section class="expertise">
+  <h2>Expertise On</h2>
+  <div class="tools">
+    <div class="tool"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png">Adobe Photoshop</div>
+    <div class="tool"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968472.png">Adobe Illustrator</div>
+    <div class="tool"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968471.png">Adobe InDesign</div>
+    
+    <div class="tool"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">Figma</div>
+    <div class="tool"><img src="https://cdn-icons-png.flaticon.com/512/732/732221.png">Microsoft</div>
+  </div>
+</section>
+
+<section id="reviews">
+  <h2>Client Reviews</h2><br>
+  <div class="grid">
+    <div class="review">“Elegant design with great attention to detail.”</div>
+    <div class="review">“Professional, clean and very reliable.”</div>
+  </div>
+</section>
+
+<section id="login">
+  <h2>Login and Feedback</h2><br>
+  <form>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    <textarea rows="4" placeholder="Your comment"></textarea>
+    <button>Submit</button>
+  </form>
+</section>
+
+<footer>
+  <div class="social">
+    <i class="fab fa-linkedin"></i>
+    <i class="fab fa-instagram"></i>
+    <i class="fab fa-facebook"></i>
+  </div>
+  <div class="tagline">বিশ্বাস, নান্দনিকতা ও পেশাদারিত্বের প্রতিশ্রুতি — Vectfy</div>
+</footer>
+
+</body>
+</html>
